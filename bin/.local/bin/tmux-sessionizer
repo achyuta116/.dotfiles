@@ -1,0 +1,22 @@
+#!/bin/bash
+
+session=$(find ~  ~/Desktop/Projects ~/Desktop/Code -type d -maxdepth 1 -mindepth 1 | fzf)
+session_name=$(basename "$session" | tr "." "_")
+
+tmuxrunning=$(pgrep tmux)
+
+if [[ -z $TMUX ]]; then
+    if ! tmux has-session  -t "$session_name" 2> /dev/null ; then
+        tmux -2 new-session -s "$session_name" -c "$session"
+    else
+        tmux -2 a -t "$session_name"
+    fi
+    exit 0
+fi
+
+if ! tmux has-session  -t "$session_name" 2> /dev/null ; then
+    tmux -2 new-session -s "$session_name" -c "$session" -d
+fi
+
+tmux switchc -t "$session_name"
+
