@@ -3,12 +3,12 @@ if not status_ok then
     return
 end
 
-local status_ok, lsp_installer = pcall(require, "mason")
+local _, lsp_installer = pcall(require, "mason")
 if not status_ok then
     return
 end
 
-local status_ok, lsp_config = pcall(require, "mason-lspconfig")
+local _, lsp_config = pcall(require, "mason-lspconfig")
 if not status_ok then
     return
 end

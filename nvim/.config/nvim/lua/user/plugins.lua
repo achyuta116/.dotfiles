@@ -68,9 +68,11 @@ return packer.startup(function(use)
         "williamboman/mason-lspconfig.nvim",
         "neovim/nvim-lspconfig",
     }
-    use 'sbdchd/neoformat'
-
-
+    use {
+        'creativenull/efmls-configs-nvim',
+        tag = 'v0.2.*', -- tag is optional
+        requires = { 'neovim/nvim-lspconfig' },
+    }
     -- Telescope
     use "nvim-telescope/telescope.nvim"
     -- Treesitter

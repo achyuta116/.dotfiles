@@ -64,5 +64,5 @@ keymap("n", "<leader>u", "<cmd>UndotreeToggle<cr>", opts)
 
 keymap("n", "<C-f>", ":silent !tmux neww tmux-sessionizer<CR>", opts)
 
--- Formatting using Neoformat
-keymap("n", "<leader>r", ":Neoformat<cr>", opts)
+-- Formatting using efm
+keymap("n", "<leader>r", ":Format<cr>", opts)
