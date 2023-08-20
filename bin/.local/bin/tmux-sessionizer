@@ -1,22 +1,25 @@
 #!/bin/bash
 
-session=$(find ~  ~/Desktop/Projects ~/Desktop/Code -type d -maxdepth 1 -mindepth 1 | fzf)
-session_name=$(basename "$session" | tr "." "_")
+if [[ $# -eq 1 ]]; then
+    selected=$1
+else
+    selected=$(find ~ ~/Desktop/Projects ~/Desktop/Code  -mindepth 1 -maxdepth 1 -type d | fzf)
+fi
 
-tmuxrunning=$(pgrep tmux)
-
-if [[ -z $TMUX ]]; then
-    if ! tmux has-session  -t "$session_name" 2> /dev/null ; then
-        tmux -2 new-session -s "$session_name" -c "$session"
-    else
-        tmux -2 a -t "$session_name"
-    fi
+if [[ -z $selected ]]; then
     exit 0
 fi
 
-if ! tmux has-session  -t "$session_name" 2> /dev/null ; then
-    tmux -2 new-session -s "$session_name" -c "$session" -d
+selected_name=$(basename "$selected" | tr . _)
+tmux_running=$(pgrep tmux)
+
+if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+    tmux new-session -s $selected_name -c $selected
+    exit 0
 fi
 
-tmux switchc -t "$session_name"
+if ! tmux has-session -t=$selected_name 2> /dev/null; then
+    tmux new-session -ds $selected_name -c $selected
+fi
 
+tmux switch-client -t $selected_name
