@@ -6,6 +6,7 @@ local keymap = vim.api.nvim_set_keymap
 keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+vim.g.undotree_SplitWidth = 30
 
 -- Normal --
 -- Better window navigation
@@ -59,9 +60,9 @@ keymap("n", "<leader>f",
     "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>"
     , opts)
 keymap("n", "<leader>t", "<cmd>Telescope live_grep<cr>", opts)
-keymap("n", "<leader> ", "<cmd>Telescope buffers<cr>", opts)
+keymap("n", "<leader>u", "<cmd>UndotreeToggle<cr>", opts)
 
 keymap("n", "<C-f>", ":silent !tmux neww tmux-sessionizer<CR>", opts)
 
--- Formatting using null-ls
-keymap("n", "<leader>r", ":Format<cr>", opts)
+-- Formatting using Neoformat
+keymap("n", "<leader>r", ":Neoformat<cr>", opts)

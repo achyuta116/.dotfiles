@@ -85,11 +85,16 @@ return packer.startup(function(use)
     use "JoosepAlviste/nvim-ts-context-commentstring"
 
     -- Nvim-tree
-    use "kyazdani42/nvim-web-devicons"
-    use "kyazdani42/nvim-tree.lua"
-
+    use {
+        'nvim-tree/nvim-tree.lua',
+        requires = {
+            'nvim-tree/nvim-web-devicons', -- optional
+        },
+    }
     -- autopairs
     use "windwp/nvim-autopairs"
+    -- undotree
+    use "mbbill/undotree"
 
     use {
         'nvim-lualine/lualine.nvim',
