@@ -47,8 +47,6 @@ return packer.startup(function(use)
     use "tpope/vim-fugitive"
     use "lewis6991/gitsigns.nvim"
     use "rebelot/kanagawa.nvim"
-    use "akinsho/bufferline.nvim"
-    use "moll/vim-bbye"
     -- cmp plugins
     use "hrsh7th/nvim-cmp" -- The completion plugin
     use "hrsh7th/cmp-nvim-lsp"
@@ -97,6 +95,9 @@ return packer.startup(function(use)
     use "windwp/nvim-autopairs"
     -- undotree
     use "mbbill/undotree"
+
+    -- Harpoon
+    use "ThePrimeagen/harpoon"
 
     use {
         'nvim-lualine/lualine.nvim',

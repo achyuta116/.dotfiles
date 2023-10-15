@@ -23,9 +23,12 @@ keymap("n", "<A-Down>", ":resize +2<CR>", opts)
 keymap("n", "<A-Left>", ":vertical resize +2<CR>", opts)
 keymap("n", "<A-Right>", ":vertical resize -2<CR>", opts)
 
--- Navigate buffers
-keymap("n", "<S-l>", ":bnext<CR>", opts)
-keymap("n", "<S-h>", ":bprevious<CR>", opts)
+-- Navigate harpoon
+keymap("n", "<S-l>", ":lua require('harpoon.ui').nav_next()<CR>", opts)
+keymap("n", "<S-h>", ":lua require('harpoon.ui').nav_prev()<CR>", opts)
+keymap("n", "<leader>hq", ':lua require("harpoon.ui").toggle_quick_menu()<CR>', opts)
+keymap("v", "<leader>hq", ':lua require("harpoon.ui").toggle_quick_menu()<CR>', opts)
+keymap('n', '<leader>ha', ':lua require("harpoon.mark").add_file()<CR>', opts)
 
 -- Insert --
 -- Press jk fast to enter
