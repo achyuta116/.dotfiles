@@ -1,4 +1,4 @@
-local status_ok, _ = pcall(require, "lspconfig")
+local status_ok, nvim_lspconfig = pcall(require, "lspconfig")
 if not status_ok then
     return
 end
@@ -64,7 +64,11 @@ lsp_config.setup_handlers({
             local gopls_opts = require("user.lsp.settings.gopls")
             opts = vim.tbl_deep_extend("force", gopls_opts, opts)
         end
-
         require("lspconfig")[server_name].setup(opts)
     end
 })
+
+nvim_lspconfig.ocamllsp.setup {
+    on_attach = require("user.lsp.handlers").on_attach,
+    capabilities = require("user.lsp.handlers").capabilities
+}

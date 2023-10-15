@@ -133,3 +133,6 @@ export NVM_DIR="$HOME/.nvm"
 
 # opam configuration
 [[ ! -r /Users/achyuta/.opam/opam-init/init.zsh ]] || source /Users/achyuta/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+
+
+eval $(opam env)
