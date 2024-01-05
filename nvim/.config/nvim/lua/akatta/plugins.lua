@@ -119,6 +119,8 @@ return packer.startup(function(use)
         requires = { 'nvim-tree/nvim-web-devicons', opt = true }
     } -- Automatically set up your configuration after cloning packer.nvim
 
+    use "folke/lua-dev.nvim"
+    use "milisims/nvim-luaref"
     use "/Users/achyuta/Desktop/Projects/tomorrow.nvim"
 
 
